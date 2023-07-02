@@ -1,19 +1,28 @@
 {% extends "base.html" %} {% block content %}
-<h1>Pending Tasks</h1>
 
-{% if tasks %}
-<ul>
-  {% for task in tasks %}
-  <a href="{% url 'get-task' task.id %}">
-    <li>
-      <h1>{{task.title}}</h1>
-      <p>{{task.description}}</p>
-      <strong>By: {{task.user.username}}</strong>
-    </li>
-  </a>
-  {%endfor%}
-</ul>
-{% else %}
-<p>No tasks yet.</p>
-{% endif %}
+<main class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      {% if tasks %}
+      <h1 class="text-center display-6 py-5">Pending Tasks</h1>
+
+      <ul class="list-group">
+        {% for task in tasks %}
+        <a class="list-group-item" href="{% url 'get-task' task.id %}">
+          {% if task.important %}
+          <p class="h1 display-6 fw-bold">{{task.title}}</p>
+          {% else %}
+          <p class="h1 display-6">{{task.title}}</p>
+          {%endif%}
+          <p>{{task.description}}</p>
+        </a>
+        {%endfor%}
+      </ul>
+      {% else %}
+      <p>No tasks yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</main>
+
 {% endblock %}
