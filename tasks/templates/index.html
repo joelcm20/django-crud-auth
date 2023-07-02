@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-
-{% if user.is_authenticated %}
-<h1>hello {{user.username}}, this is a test</h1>
-{% else %}
-<h1>hello world, this is a test</h1>
-{% endif %}
+<main class="container py-5">
+  <section class="card card-body">
+    {% if user.is_authenticated %}
+    <h1 class="display-1">hello {{user.username}}, this is a test</h1>
+    {% else %}
+    <h1 class="display-1">hello world, this is a test</h1>
+    {% endif %}
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae eos, omnis
+      architecto mollitia laborum natus a vel ea. Fugiat illum dolor ipsam
+      similique eligendi facere itaque mollitia commodi fugit reiciendis.
+    </p>
+  </section>
+</main>
 
 {% endblock %}
